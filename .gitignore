@@ -1,0 +1,27 @@
+# Node modules
+/node_modules/
+
+# Build output
+/dist/
+/build/
+
+# Tailwind CSS
+/.tailwind/
+
+# .env files (if you're using environment variables)
+.env
+
+# Log files
+*.log
+
+# Temporary files from your code editor
+.vscode/
+/.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# NPM and Yarn lock files (optional, but can be included)
+package-lock.json
+yarn.lock
