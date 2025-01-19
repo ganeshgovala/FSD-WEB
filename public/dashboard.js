@@ -170,7 +170,7 @@ async function deleteForm(formId) {
 async function getDetails() {
     const email = await getEmail();
     try {
-        const response = await fetch("http://localhost:3000/getDetails", {
+        const response = await fetch("https://forming-0w01.onrender.com/getDetails", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
