@@ -11,7 +11,7 @@ async function getDetails(param1, param2) {
         docId : param2
     }
     try {
-        const response = await fetch("https://fsd-web.onrender.com/getFormDetails", {
+        const response = await fetch("http://localhost:3000/getFormDetails", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -59,7 +59,7 @@ async function getReponses(param1, param2) {
     const tableSection = document.getElementById("tableSection");
     console.log(data1);
     try {
-        const response = await fetch("https://fsd-web.onrender.com/getReponses", {
+        const response = await fetch("http://localhost:3000/getReponses", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"

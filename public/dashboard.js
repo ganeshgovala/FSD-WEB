@@ -58,9 +58,9 @@ async function getForms() {
     const email = await getEmail();
     const formsContainer = document.getElementById("formsContainer");
     if(!email) return;
-    console.log(email);
+    console.log("Email : ",email);
     try {
-        const response = await fetch("https://fsd-web.onrender.com/getForms", {
+        const response = await fetch("http://localhost:3000/getForms", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -71,6 +71,7 @@ async function getForms() {
             console.log("Successsss");
         }
         const data = await response.json();
+        console.log(data);
         const ar = data.response;
         console.log(ar);
 
@@ -91,12 +92,12 @@ async function getForms() {
             ar.forEach((element, index) => {
                 const newDiv = document.createElement("div");
                 newDiv.innerHTML = `
-                    <div id="form${element.docId}" class="w-[80vw] py-6 text-[#232323] bg-[#fbfcff] text-3xl font-semibold rounded-xl my-4 px-8 shadow-md border-2 border-dashed border-black flex justify-between items-center">
+                    <div class="w-[80vw] py-6 text-[#232323] bg-[#fbfcff] text-3xl font-semibold rounded-xl my-4 px-8 shadow-md border-2 border-dashed border-black flex justify-between items-center">
                         <p>${index+1}. ${element.data.title}</p>
                         <div class="flex text-lg items-center space-x-5">
                             <p class="cursor-pointer hover:underline" id="${element.docId+"copyLink"}">Copy Link</p>
                             <p class="cursor-pointer hover:underline" id="delete-${element.docId}">Delete</p>
-                            <p class="cursor-pointer hover:underline">Responses</p>
+                            <p class="cursor-pointer hover:underline" id="form${element.docId}">Responses</p>
                         </div>
                     </div>
                 `
@@ -114,9 +115,12 @@ async function getForms() {
 
                 document.getElementById(`${element.docId+"copyLink"}`).addEventListener('click', async () => {
                     const email = await getEmail();
-                    const textToCopy = `https://fsd-web.onrender.com/example?param1=${email}&param2=${element.docId}`
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        window.alert("Link Copied");
+                    const textToCopy = `http://localhost:3000/example?param1=${email}&param2=${element.docId}`
+                    navigator.clipboard.writeText(textToCopy).then(async () => {
+                        document.getElementById(`${element.docId+"copyLink"}`).innerHTML = "Copied";
+                        setTimeout(() => {
+                            document.getElementById(`${element.docId+"copyLink"}`).innerHTML = "Copy Link";
+                        }, 5000);
                     })
                     .catch((err) => {
                         window.alert("Failed to copy");
@@ -145,7 +149,7 @@ async function deleteForm(formId) {
             email : email,
             docId : formId
         }
-        const response = await fetch("https://fsd-web.onrender.com/deleteForm", {
+        const response = await fetch("http://localhost:3000/deleteForm", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -162,3 +166,26 @@ async function deleteForm(formId) {
         window.alert(err);
     }
 }
+
+async function getDetails() {
+    const email = await getEmail();
+    try {
+        const response = await fetch("http://localhost:3000/getDetails", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({email : email})
+        })
+        const data = response.json();
+        data.then((res) => {
+            document.getElementById("welcomeNote").innerHTML = `
+                <h1 class="text-5xl pt-4 pb-8 font-semibold text-[#232323]">Welcome ${res.name} !</h1>
+            `
+        })
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+getDetails();

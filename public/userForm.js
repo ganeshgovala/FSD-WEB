@@ -14,7 +14,7 @@ async function getForm() {
       email: param1,
       docId: param2,
     };
-    const response = await fetch("https://fsd-web.onrender.com/getParticularForm", {
+    const response = await fetch("http://localhost:3000/getParticularForm", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,20 +124,22 @@ async function addResponse() {
     responses : responses
   }
 
-  console.log(data1);
-
-  await fetch("https://fsd-web.onrender.com/addResponse", {
+  await fetch("http://localhost:3000/addResponse", {
     method : "POST",
     headers : {
       "Content-Type" : "application/json"
     },
     body: JSON.stringify(data1)
   })
-  .then((res) => res.text())
-  .catch((err) => console.log(err))
+  .then((res) => {
+    res.text();
+  })
+  .catch((err) => window.alert("Can't Submit the form"));
 
-  window.location.href = "/successfullPage";
-  window.history.replaceState(null, null, "/successfullPage");
+  console.log("submitted");
+
+  window.location.href = '/successfullPage';
+  window.history.replaceState(null, null, '/successfullPage');
 }
 
 document.getElementById("formField").addEventListener("click", () => {
