@@ -4,6 +4,8 @@ const { initializeApp, cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 const cors = require("cors");
 
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(__dirname+ "/keys/service-account-key.json");
+
 const serviceAccount = require("./serviceAccount.json");
 const app = express();
 app.use(cors());
