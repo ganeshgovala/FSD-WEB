@@ -10,9 +10,12 @@ const app = express();
 app.use(cors());
 
 initializeApp({
-    credential: cert(serviceAccount),
+    credential: cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Handle newlines in private key
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    }),
 });
-
 const db = getFirestore();
 
 app.use(express.json());
