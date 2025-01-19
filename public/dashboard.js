@@ -60,7 +60,7 @@ async function getForms() {
     if(!email) return;
     console.log("Email : ",email);
     try {
-        const response = await fetch("http://localhost:3000/getForms", {
+        const response = await fetch("https://fsd-web.onrender.com/getForms", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -115,7 +115,7 @@ async function getForms() {
 
                 document.getElementById(`${element.docId+"copyLink"}`).addEventListener('click', async () => {
                     const email = await getEmail();
-                    const textToCopy = `http://localhost:3000/example?param1=${email}&param2=${element.docId}`
+                    const textToCopy = `https://fsd-web.onrender.com/example?param1=${email}&param2=${element.docId}`
                     navigator.clipboard.writeText(textToCopy).then(async () => {
                         document.getElementById(`${element.docId+"copyLink"}`).innerHTML = "Copied";
                         setTimeout(() => {
@@ -149,7 +149,7 @@ async function deleteForm(formId) {
             email : email,
             docId : formId
         }
-        const response = await fetch("http://localhost:3000/deleteForm", {
+        const response = await fetch("https://fsd-web.onrender.com/deleteForm", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -170,7 +170,7 @@ async function deleteForm(formId) {
 async function getDetails() {
     const email = await getEmail();
     try {
-        const response = await fetch("http://localhost:3000/getDetails", {
+        const response = await fetch("https://fsd-web.onrender.com/getDetails", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
