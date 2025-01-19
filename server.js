@@ -16,14 +16,15 @@ initializeApp({
 const db = getFirestore();
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
+const PORT = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/example", (req, res) => {
-    res.sendFile(__dirname+"public"+"userForm.html");
+    res.sendFile(path.join(__dirname+"public"+"userForm.html"));
 })
 
 app.post("/getParticularForm", async (req, res) => {
@@ -170,6 +171,6 @@ app.get("/getDetails", async (req, res) => {
     res.json(docs);
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is running on port 3000");
 });
