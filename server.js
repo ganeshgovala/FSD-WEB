@@ -12,7 +12,7 @@ app.use(cors());
 admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Handle newlines in private key
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.split(String.raw`\n`).join('\n'), // Handle newlines in private key
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
     }),
 });
