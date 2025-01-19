@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forming</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#f6f8ff] flex justify-center p-10">
+    <!--------------------------------------------------------------------------------------------------------------->
+    <div class="w-[800px] h-[700px] shadow-2xl bg-white rounded-3xl fixed top-10 bottom-0 p-20 hidden" id="overlay">
+        <div class="w-full flex items-center">
+            <input type="text" placeholder="Question.. ?" class="w-full h-14 outline-none text-3xl py-5 my-2" id="question" />
+            <h1 class="text-red-500 text-3xl hidden" id="important">*</h1>
+        </div>
+        <hr>
+        <div class="my-3 flex space-x-4">
+            <p class="text-xl">Answer type : </p>
+            <select name="" id="answerType">
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+                <option value="radio">Single Answer</option>
+                <option value="checkbox">Multiple Answers</option>
+            </select>
+        </div>
+        <div id="optionsField" class="hidden">
+            <div class="flex items-center py-3 px-4 rounded-xl space-x-3 my-3">
+                <p class="text-xl">1. </p>
+                <input type="text" class="text-xl outline-none bg-transparent" placeholder="Option 1" id="option1">
+            </div>
+            <div class="flex items-center py-3 px-4 rounded-xl space-x-3 my-3">
+                <p class="text-xl">2. </p>
+                <input type="text" class="text-xl outline-none bg-transparent" placeholder="Option 2" id="option2">
+            </div>
+            <div class="flex items-center py-3 px-4 rounded-xl space-x-3 my-3">
+                <p class="text-xl">3. </p>
+                <input type="text" class="text-xl outline-none bg-transparent" placeholder="Option 3" id="option3">
+            </div>
+            <div class="flex items-center py-3 px-4 rounded-xl space-x-3 my-3">
+                <p class="text-xl">4. </p>
+                <input type="text" class="text-xl outline-none bg-transparent" placeholder="Option 4" id="option4">
+            </div>
+        </div>
+        <hr>
+        <div class="my-4 ml-4 flex space-x-6">
+            <div class="flex items-center space-x-3">
+                <input type="checkbox" class="size-3" id="importantCheckBox">
+                <p class="text-[#656565]">Mark this question as Important</p>
+            </div>
+        </div>
+        <hr>
+        <div class="pt-5 flex space-x-10">
+            <button class="bg-[#232323] py-2 px-8 rounded-lg text-white" id="submitQuestion">Submit</button>
+            <button class="bg-gray-200 py-2 px-8 rounded-lg" id="closeCard">Cancel</button>
+        </div>
+    </div>
+    <!--------------------------------------------------------------------------------------------------------------->
+    <main class="w-[600px] bg-white shadow-xl rounded-3xl pb-8">
+        <div class="w-full h-10 bg-[#232323] rounded-t-xl"></div>
+        <div class="flex justify-between items-center px-8 pt-4">
+            <input type="text" class="text-3xl h-12 font-semibold outline-none w-full" placeholder="Heading / Title" id="heading" />
+        </div>
+        <textarea name="text" class="w-full outline-none text-md text-[#272727] my-2 ml-8" placeholder="Description" id="description"></textarea>
+        <hr>
+        <div class="ml-8 my-3" id="questionsField"></div>
+        <div class="mx-8 my-4 py-2 bg-gray-200 rounded-xl flex justify-center cursor-pointer hover:bg-gray-300" id="addQuestionButton">+ Add Question</div>
+        <hr>
+        <div class="pt-5 flex space-x-5 px-8">
+            <button class="bg-[#232323] py-2 px-8 rounded-lg text-white" id="createForm">Create</button>
+            <button class="bg-gray-200 py-2 px-8 rounded-lg" id="cancelForm">Cancel</button>
+        </div>
+    </main>
+    <script type="module" src="form.js"></script>
+</body>
+</html>

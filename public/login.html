@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="assets/fav.png" type="image/png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        .sacramento-regular {
+            font-family: "Sacramento", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="fixed top-[48%] left-[48%] p-3 shadow-md rounded-xl bg-white hidden" id="loading">
+        <div class="h-10 w-10 border-4 border-b-white border-black rounded-full animate-spin"></div>
+    </div>
+    <h1 class="sacramento-regular text-4xl absolute top-10 left-10">forming</h1>
+    <main class="pb-8 rounded-2xl bg-white shadow-xl w-[500px] border-2">
+        <div class="h-20 rounded-t-xl w-full bg-[#232323] flex items-center justify-center mb-6">
+            <h1 class="text-3xl font-semibold my-4 text-white">Login</h1>
+        </div>
+        <div class="px-16 w-full">
+            <p class="text-xl font-semibold">Email</p>
+            <input type="text" placeholder="Ex. jhon@xyz.com" class="border-2 border-gray-300 rounded-lg px-6 py-2 font-lg w-full my-3" id="email">
+            <p class="text-xl font-semibold">Password</p>
+            <input type="password" class="border-2 border-gray-300 rounded-lg px-6 py-2 font-lg w-full my-3" id="password">
+            <p class="text-red-500 font-semibold hidden" id="loginError">Invalid Credentials</p>
+            <button class="w-full bg-[#232323] rounded-lg py-2 text-white font-semibold my-3" id="login">Login</button>
+            <p class="text-gray-600 text-center my-2">Don't have an account ? <a class="font-semibold text-black underline cursor-pointer" id="signup">Create Account</a></p>
+        </div>
+    </main>
+    <script>
+        document.getElementById("signup").addEventListener("click", () => {
+            window.location.href = "/signup";
+        })
+    </script>
+    <script type="module" src="login.js"></script>
+</body>
+</html>

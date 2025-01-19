@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="assets/fav.png" type="image/png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        .element {
+        overflow: auto; /* Ensures content is scrollable */
+        }
+
+        .element::-webkit-scrollbar {
+        display: none; /* Hides the scrollbar */
+        }
+      .sacramento-regular {
+        font-family: "Sacramento", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      body {
+            background-color: #ffffff00;
+            opacity: 1;
+            background-image:  linear-gradient(#00000015 1.1px, transparent 1.1px), linear-gradient(to right, #00000015 1.1px, #ffffff00 1.1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="p-10">
+    <div id="responsesField">
+        <h1 class="text-6xl font-semibold mt-1 text-[#232323]">Loading...</h1>
+        <p class="pt-5 pb-4 text-[#626262] mt-1 text-lg w-[60vw]">Description</p>
+    </div>
+    <div class="bg-[#232323] py-3 px-6 inline-block text-white text-xl" id="totalResponses">Total Responses : <span class="font-semibold"> ..</span></div>
+    <div class="mt-5 overflow-scroll element" id="tableSection">
+        <!-- <table class="text-lg border-collapse w-full table-fixed" id="responsesTable">
+            <tr>
+                <td></td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">1</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">G. Sri Ram Ganesh</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">CSE</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">B</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">Movies, Studying</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">2</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">Gummala. Sagar Sandeep Kumar</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">ECE</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">C</td>
+                <td class="py-2 px-7 border-2 border-dashed border-[#232323] text-center">Sports, Singing</td>
+            </tr>
+        </table> -->
+    </div>
+    <script type="module" src="responses.js"></script>
+</body>
+</html>

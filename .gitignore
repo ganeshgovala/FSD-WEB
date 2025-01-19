@@ -25,3 +25,6 @@ Thumbs.db
 # NPM and Yarn lock files (optional, but can be included)
 package-lock.json
 yarn.lock
+
+# JSON files
+.json
