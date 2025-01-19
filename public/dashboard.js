@@ -60,7 +60,7 @@ async function getForms() {
     if(!email) return;
     console.log(email);
     try {
-        const response = await fetch("http://localhost:3000/getForms", {
+        const response = await fetch("https://fsd-web.onrender.com/getForms", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -114,7 +114,7 @@ async function getForms() {
 
                 document.getElementById(`${element.docId+"copyLink"}`).addEventListener('click', async () => {
                     const email = await getEmail();
-                    const textToCopy = `http://localhost:3000/example?param1=${email}&param2=${element.docId}`
+                    const textToCopy = `https://fsd-web.onrender.com/example?param1=${email}&param2=${element.docId}`
                     navigator.clipboard.writeText(textToCopy).then(() => {
                         window.alert("Link Copied");
                     })
@@ -145,7 +145,7 @@ async function deleteForm(formId) {
             email : email,
             docId : formId
         }
-        const response = await fetch("http://localhost:3000/deleteForm", {
+        const response = await fetch("https://fsd-web.onrender.com/deleteForm", {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"

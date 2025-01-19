@@ -56,7 +56,7 @@ async function addUser(name, email) {
     name : name,
     email : email
   }
-  await fetch("http://localhost:3000/addUser", {
+  await fetch("https://fsd-web.onrender.com/addUser", {
     method : "POST",
     headers : {
       "Content-Type" : "application/json",

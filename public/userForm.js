@@ -14,7 +14,7 @@ async function getForm() {
       email: param1,
       docId: param2,
     };
-    const response = await fetch("http://localhost:3000/getParticularForm", {
+    const response = await fetch("https://fsd-web.onrender.com/getParticularForm", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ async function addResponse() {
 
   console.log(data1);
 
-  await fetch("http://localhost:3000/addResponse", {
+  await fetch("https://fsd-web.onrender.com/addResponse", {
     method : "POST",
     headers : {
       "Content-Type" : "application/json"

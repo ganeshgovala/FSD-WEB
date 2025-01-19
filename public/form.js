@@ -152,7 +152,7 @@ document.getElementById("createForm").addEventListener("click", async () => {
   console.log("At Frontend : ", data);
   if (questions.length != 0 && heading != "") {
     history.back();
-    await fetch("http://localhost:3000/addData", {
+    await fetch("https://fsd-web.onrender.com/addData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
