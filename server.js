@@ -1,6 +1,6 @@
 const express = require("express");
+const admin = require('firebase-admin');
 const path = require("path");
-const { initializeApp, cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 const cors = require("cors");
 require('dotenv').config();
@@ -9,8 +9,8 @@ const serviceAccount = require("./serviceAccount.json");
 const app = express();
 app.use(cors());
 
-initializeApp({
-    credential: cert({
+admin.initializeApp({
+    credential: admin.credential.cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
       privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Handle newlines in private key
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
@@ -169,6 +169,6 @@ app.post("/getDetails", async (req, res) => {
     res.json(response);
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is running on port 3000");
 });
