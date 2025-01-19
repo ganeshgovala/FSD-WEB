@@ -3,7 +3,6 @@ const path = require("path");
 const { initializeApp, cert } = require("firebase-admin/app");
 const { getFirestore } = require("firebase-admin/firestore");
 const cors = require("cors");
-const admin = require('./firebase');
 require('dotenv').config();
 
 const serviceAccount = require("./serviceAccount.json");
@@ -14,7 +13,7 @@ initializeApp({
     credential: cert(serviceAccount),
 });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
