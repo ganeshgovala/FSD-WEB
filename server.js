@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/example", (req, res) => {
-    res.sendFile(__dirname+"\\public\\"+"userForm.html");
+    res.sendFile(__dirname+"public"+"userForm.html");
 })
 
 app.post("/getParticularForm", async (req, res) => {
@@ -44,23 +44,23 @@ app.post("/getParticularForm", async (req, res) => {
 })
 
 app.get("/form", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"form.html"));
+    res.sendFile(path.join(__dirname+"public"+"form.html"));
 })
 
 app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"login.html"));
+    res.sendFile(path.join(__dirname+"public"+"login.html"));
 })
 
 app.get("/signup", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"register.html"));
+    res.sendFile(path.join(__dirname+"public"+"register.html"));
 })
 
 app.get("/successfullPage", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"successfullPage.html"));
+    res.sendFile(path.join(__dirname+"public"+"successfullPage.html"));
 })
 
 app.get("/dashboard", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"dashboard.html"));
+    res.sendFile(path.join(__dirname+"public"+"dashboard.html"));
 })
 
 app.post("/addData", async (req, res) => {
@@ -108,7 +108,7 @@ app.post("/getForms", async (req, res) => {
 })
 
 app.get("/responses", (req, res) => {
-    res.sendFile(__dirname+"\\public\\"+"responses.html");
+    res.sendFile(__dirname+"public"+"responses.html");
 })
 
 app.post('/getFormDetails', async (req, res) => {
