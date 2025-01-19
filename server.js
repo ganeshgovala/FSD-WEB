@@ -5,7 +5,6 @@ const { getFirestore } = require("firebase-admin/firestore");
 const cors = require("cors");
 
 const serviceAccount = require("./serviceAccount.json");
-const { title } = require("process");
 const app = express();
 app.use(cors());
 
@@ -20,11 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 const PORT = process.env.PORT || 4000;
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"index.html"));
 });
 
 app.get("/example", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"userForm.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"userForm.html"));
 })
 
 app.post("/getParticularForm", async (req, res) => {
@@ -45,23 +44,23 @@ app.post("/getParticularForm", async (req, res) => {
 })
 
 app.get("/form", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"form.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"form.html"));
 })
 
 app.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"login.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"login.html"));
 })
 
 app.get("/signup", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"register.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"register.html"));
 })
 
 app.get("/successfullPage", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"successfullPage.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"successfullPage.html"));
 })
 
 app.get("/dashboard", (req, res) => {
-    res.sendFile(path.join(__dirname+"\\public\\"+"dashboard.html"));
+    res.sendFile(path.join(__dirname+"/public/"+"dashboard.html"));
 })
 
 app.post("/addData", async (req, res) => {
@@ -109,7 +108,7 @@ app.post("/getForms", async (req, res) => {
 })
 
 app.get("/responses", (req, res) => {
-    res.sendFile(__dirname+"\\public\\"+"responses.html");
+    res.sendFile(__dirname+"/public/"+"responses.html");
 })
 
 app.post('/getFormDetails', async (req, res) => {
@@ -171,6 +170,6 @@ app.get("/getDetails", async (req, res) => {
     res.json(docs);
 })
 
-app.listen(PORT, () => {
+app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
