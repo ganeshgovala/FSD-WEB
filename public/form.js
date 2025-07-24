@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnAj7cJEQU6q3vwqI7HyHDnSVytFRKXqI",
@@ -16,6 +17,7 @@ document.getElementById("description").value = "";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 let email;
 
@@ -144,28 +146,19 @@ document.getElementById("createForm").addEventListener("click", async () => {
   const heading = document.getElementById("heading").value;
   const description = document.getElementById("description").value;
   const data = {
-    email: email,
     questions: questions,
     title: heading,
     description: description,
   };
   console.log("At Frontend : ", data);
   if (questions.length != 0 && heading != "") {
-    history.back();
-    await fetch("http://localhost:3000/addData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.text())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await addDoc(collection(db, "Users", email, "Forms"), data);
+      history.back();
+    } catch (err) {
+      console.log(err);
+      window.alert("Error creating form");
+    }
   } else {
     window.alert("Add Atleast one question");
   }
