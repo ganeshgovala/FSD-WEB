@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnAj7cJEQU6q3vwqI7HyHDnSVytFRKXqI",
@@ -14,6 +15,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 document.getElementById("signup").addEventListener("click", async () => {
   const name = document.getElementById("name").value.trim();
@@ -53,21 +55,13 @@ document.getElementById("signup").addEventListener("click", async () => {
 async function addUser(name, email) {
   console.log("User Added");
   const data = {
-    name : name,
-    email : email
-  }
-  await fetch("http://localhost:3000/addUser", {
-    method : "POST",
-    headers : {
-      "Content-Type" : "application/json",
-    },
-    body : JSON.stringify(data),
-  })
-  .then((res) => res.text())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
+    name: name,
+    email: email
+  };
+  try {
+    await addDoc(collection(db, "Users", email, "Details"), data);
+  } catch (err) {
     console.log(err);
-  })
+    window.alert("Error adding user details");
+  }
 }
